@@ -3,6 +3,8 @@ screenshotapi
 
 An API Client for ScreenshotAPI.io (www.screenshotapi.io)
 
+Will perform a screenshot capture using ScreenshotAPI.io and store the resulting screenshot png file locally on disk given the path prefix specified in the `save_path` argument.
+
 Usage
 -----
 
