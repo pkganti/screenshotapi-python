@@ -31,9 +31,9 @@ def try_retrieve(apikey, key):
 
 def get_screenshot(apikey, capture_request, save_path):
     key = begin_capture(apikey, capture_request)
-    timeout_seconds = 60
+    timeout_seconds = 900
     wait_seconds_counter = 0
-    retry_delay_seconds = 3
+    retry_delay_seconds = 5
 
     while True:
         result = try_retrieve(apikey, key)
@@ -47,7 +47,7 @@ def get_screenshot(apikey, capture_request, save_path):
             print("Screenshot not yet ready, waiting {} seconds...".format(retry_delay_seconds))
             time.sleep(retry_delay_seconds)
             if wait_seconds_counter > timeout_seconds:
-                print("Timed out while downloading: " + key)
+                print("Timed out while attempting to retrieve: " + key)
                 break
   
 if __name__ == "__main__":

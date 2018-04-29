@@ -1,13 +1,14 @@
 screenshotapi
 =============
 
-A API Client for ScreenshotAPI.io (www.screenshotapi.io)
+An API Client for ScreenshotAPI.io (www.screenshotapi.io)
 
 Usage
 -----
 
 .. code-block:: python
 
+  # pip install screenshotapi
   import screenshotapi
 
   screenshotapi.get_screenshot(
@@ -17,7 +18,8 @@ Usage
             'viewport': '1200x800',
             'fullpage': False,
             'webdriver': 'firefox',
-            'javascript': True
+            'javascript': True,
+            'fresh': False
           },
           save_path = './'
   )
