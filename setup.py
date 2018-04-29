@@ -7,7 +7,7 @@ with codecs_open('README.rst', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='screenshotapi',
-      version='1.0',
+      version='1.1',
       description='Python API Client for Screenshotapi.io',
       long_description=long_description,
       author='Doug Kerwin',
