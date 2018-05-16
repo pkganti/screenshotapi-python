@@ -1,0 +1,7 @@
+FROM python:2.7
+
+RUN pip install twine
+
+WORKDIR /app
+
+ENTRYPOINT ["/bin/bash"]

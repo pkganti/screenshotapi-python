@@ -1,1 +1,1 @@
-from screenshotapi import get_screenshot
+from .screenshotapi import get_screenshot
