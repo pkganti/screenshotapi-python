@@ -9,3 +9,4 @@ twine==1.11.0
 urllib3==1.22
 virtualenv==15.2.0
 six==1.11.0
+pypandoc==1.4

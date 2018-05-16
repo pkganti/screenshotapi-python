@@ -1,5 +1,4 @@
 import re
-from codecs import open as codecs_open
 from setuptools import setup, find_packages
 
 # read the version number from source
@@ -9,9 +8,13 @@ version = re.search(
     re.M
     ).group(1)
 
-# Get the long description from the relevant file
-with codecs_open('README.rst', encoding='utf-8') as f:
-    long_description = f.read()
+try:
+    # in addition to pip install pypandoc, might have to: apt install -y pandoc
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except (IOError, ImportError) as e:
+    print("Error converting READMD.md to rst:", str(e))
+    long_description = open('README.md').read()
 
 setup(name='screenshotapi',
       version=version,

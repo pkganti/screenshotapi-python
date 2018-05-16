@@ -10,7 +10,7 @@ import argparse
 import requests
 
 
-__version__ = "1.1.2"
+__version__ = "1.1.3"
 
 
 def begin_capture(apikey, capture_request):
