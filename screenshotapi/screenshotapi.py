@@ -21,7 +21,7 @@ def begin_capture(apikey, capture_request):
     result = requests.post(
         api_endpoint,
         data=capture_request,
-        headers={ 'apikey': apikey })
+        headers={'apikey': apikey})
     print(result.text)
     if result.status_code == 401:
         raise Exception("Invalid API Key")
@@ -33,8 +33,8 @@ def try_retrieve(apikey, key):
     print('Trying to retrieve: ' + key)
     result = requests.get(
         api_endpoint,
-        params = { 'key': key },
-        headers = { 'apikey': apikey })
+        params={'key': key},
+        headers={'apikey': apikey})
     json_results = json.loads(result.text)
     if json_results["status"] == "ready":
         print('Downloading image: ' + json_results["imageUrl"])
@@ -71,24 +71,24 @@ def main():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--apikey', required=False,
-        help='Alternatively supply environment variable SCREENSHOTAPI_KEY')
+                        help='Alternatively supply environment variable SCREENSHOTAPI_KEY')
     parser.add_argument('--url', required=True)
     parser.add_argument('--webdriver',
-        default='firefox',
-        choices = ['firefox', 'chrome', 'phantomjs'])
+                        default='firefox',
+                        choices=['firefox', 'chrome', 'phantomjs'])
     parser.add_argument('--viewport',
-        default='1200x800',
-        help='The viewing area of the browser which is making the screenshot request.')
+                        default='1200x800',
+                        help='The viewing area of the browser which is making the screenshot request.')
     parser.add_argument('--fullpage', dest='fullpage', action='store_true')
     parser.add_argument('--no-javascript', dest='javascript', action='store_false')
     parser.set_defaults(javascript=True)
     parser.add_argument('--wait-seconds', default=0,
-        help='The number of seconds to wait after the page has loaded before taking the screenshot.')
+                        help='The number of seconds to wait after the page has loaded before taking the screenshot.')
     parser.add_argument('--fresh', dest='fresh', action='store_true',
-        help='Forces a fresh capture, otherwise capture may be cached (max 72 hours)')
+                        help='Forces a fresh capture, otherwise capture may be cached (max 72 hours)')
     parser.set_defaults(fresh=False)
     parser.add_argument('--save-path', default='./',
-        help='The local file path to save the screenshot jpegs to.')
+                        help='The local file path to save the screenshot jpegs to.')
 
     args = parser.parse_args()
 
@@ -104,15 +104,15 @@ def main():
         sys.exit(1)
 
     get_screenshot(
-        apikey = apikey,
-        capture_request = {
-          'url': args.url,
-          'viewport': args.viewport,
-          'fullpage': args.fullpage,
-          'webdriver': args.webdriver,
-          'javascript': args.javascript,
-          'waitSeconds': args.wait_seconds,
-          'fresh': args.fresh
+        apikey=apikey,
+        capture_request={
+            'url': args.url,
+            'viewport': args.viewport,
+            'fullpage': args.fullpage,
+            'webdriver': args.webdriver,
+            'javascript': args.javascript,
+            'waitSeconds': args.wait_seconds,
+            'fresh': args.fresh
         },
-        save_path = args.save_path
+        save_path=args.save_path
     )
