@@ -15,5 +15,5 @@ phases:
       - python setup.py sdist
 artifacts:
   files:
-    - dist/*.zip
+    - dist/*.tar.gz
   discard-paths: yes
