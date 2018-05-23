@@ -1,5 +1,7 @@
 # ScreenshotAPI.io Python Client
 
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiVHpENmRNLzM5eDVGOUhSdmc5YXBpbURPQjMzMnRlSTBvVjRmbWUyalBDR3NCUWRsZ0RrZ25NTVQzSjhXaW0vaUMxRk55OVU1YjlXMmtuc2RMaXhWVjVvPSIsIml2UGFyYW1ldGVyU3BlYyI6IkNVTzZzNDhWdjhRcVRBTTMiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
 An API Client for ScreenshotAPI.io (www.screenshotapi.io)
 
 Will perform a screenshot capture using ScreenshotAPI.io and store the resulting screenshot png file locally on disk given the path prefix specified in the `save_path` argument.
