@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing prerequisites...
+      - apt update -y
+      - apt install -y pandoc
+      - pip install twine pypandoc flake8
+  build:
+    commands:
+      - echo Linting...
+      - flake8 --ignore E501,F401 screenshotapi/
+      - echo Creating dist package
+      - python setup.py sdist
+artifacts:
+  files:
+    - dist/*.zip
+  discard-paths: yes
