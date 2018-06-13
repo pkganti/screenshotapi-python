@@ -10,11 +10,13 @@ import argparse
 import requests
 
 
-__version__ = "1.1.3"
+__version__ = "1.1.4"
 
 
 def begin_capture(apikey, capture_request):
-    api_endpoint = "https://api.screenshotapi.io/capture"
+    api_url = os.environ.get('SSAPI_URL', 'https://api.screenshotapi.io')
+    api_endpoint = "{}/capture".format(api_url)
+    print('ENDPOINT: ' + api_endpoint)
     print('Sending request: ' + capture_request['url'])
     capture_request['url'] = \
         urllib.request.pathname2url(capture_request['url']).encode('utf8')
@@ -29,7 +31,8 @@ def begin_capture(apikey, capture_request):
 
 
 def try_retrieve(apikey, key):
-    api_endpoint = 'https://api.screenshotapi.io/retrieve'
+    api_url = os.environ.get('SSAPI_URL', 'https://api.screenshotapi.io')
+    api_endpoint = "{}/retrieve".format(api_url)
     print('Trying to retrieve: ' + key)
     result = requests.get(
         api_endpoint,
@@ -46,7 +49,8 @@ def try_retrieve(apikey, key):
 
 def get_screenshot(apikey, capture_request, save_path):
     key = begin_capture(apikey, capture_request)
-    timeout_seconds = 1200
+    timeout_seconds = \
+        int(os.environ.get('SSAPI_RETRIEVE_TIMEOUT_SECS', 1200))
     wait_seconds_counter = 0
     retry_delay_seconds = 5
 
