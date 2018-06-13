@@ -10,13 +10,12 @@ import argparse
 import requests
 
 
-__version__ = "1.1.4"
+__version__ = "1.1.5"
 
 
 def begin_capture(apikey, capture_request):
     api_url = os.environ.get('SSAPI_URL', 'https://api.screenshotapi.io')
     api_endpoint = "{}/capture".format(api_url)
-    print('ENDPOINT: ' + api_endpoint)
     print('Sending request: ' + capture_request['url'])
     capture_request['url'] = \
         urllib.request.pathname2url(capture_request['url']).encode('utf8')
